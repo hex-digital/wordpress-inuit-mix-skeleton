@@ -1,0 +1,28 @@
+/* ==========================================================================
+   #TRANSITIONS
+   ========================================================================== */
+
+/**
+ * The transitions tools file contains functions for interacting with the
+ * transitions settings, _settings.transitions.scss - specifically the
+ * predefined easing and transition maps.
+ */
+
+@function transition($_key) {
+    @if map-has-key($predefined-transitions, $_key) {
+        @return map-get($predefined-transitions, $_key);
+    }
+
+    @warn "Unknown transition '#{$_key}' in $predefined-transitions. Will return null";
+    @return null;
+}
+
+
+@function ease($_key) {
+    @if map-has-key($predefined-easing, $_key) {
+        @return map-get($predefined-easing, $_key);
+    }
+
+    @warn "Unknown easing '#{$_key}' in $predefined-easing. Will return null";
+    @return null;
+}

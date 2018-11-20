@@ -1,0 +1,14 @@
+/* ==========================================================================
+   #SVG ICONS
+   ========================================================================== */
+
+/**
+ * The svg-icons utilities file contains helper classes for svg-icons;
+ *
+ * Most notably is the base helper, which hides the main SVG insert, allowing
+ * us to xlink SVGs on the page from one main injected SVG file.
+ */
+
+.u-svg-icons {
+    @include hidden-visually();
+}

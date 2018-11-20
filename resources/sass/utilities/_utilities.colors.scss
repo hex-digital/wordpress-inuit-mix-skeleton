@@ -1,0 +1,28 @@
+/* ==========================================================================
+   #COLORS
+   ========================================================================== */
+
+/**
+ * The colors utilities file maps the theme color map to utility classes to
+ * apply the theme colors on elements.
+ *
+ * E.G. if "-color": "color" is defined in the map, we get:
+ * .u-color-primary {
+ *     color: $color-primary;
+ * }
+ * plus all the other colors that are in THEME or MONOCHROME maps.
+ */
+
+@each $_property-namespace, $_property in $color-helpers {
+    @each $_color, $_color-var in $map-core-colors {
+
+        .u#{$_property-namespace} {
+
+            &-#{$_color} {
+                #{$_property}: $_color-var !important;
+            }
+
+        }
+
+    }
+}

@@ -1,0 +1,15 @@
+/* ==========================================================================
+   #HEADINGS
+   ========================================================================== */
+
+/**
+ * Reset the default styles of the headers so that the text is not bold.
+ */
+
+@for $_i from 1 through 6 {
+
+    h#{$_i} {
+        font-weight: normal;
+    }
+
+}

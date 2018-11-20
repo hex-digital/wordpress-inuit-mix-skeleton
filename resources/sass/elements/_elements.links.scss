@@ -1,0 +1,15 @@
+/* ==========================================================================
+   #HEADINGS
+   ========================================================================== */
+
+/**
+ * Simple default styling for links.
+ *
+ * 1. Set the default `color` to be same as the surrounding text color
+ * 2. Set the default `text-decoration` to be same as the surrounding decoration
+ */
+
+a {
+    color: inherit; /* [1] */
+    text-decoration: inherit; /* [2] */
+}

@@ -1,0 +1,49 @@
+/* ==========================================================================
+   #GLOBAL
+   ========================================================================== */
+
+/**
+ * The global settings file contains any project-wide variables; things that
+ * need to be made available to the entire codebase.
+ */
+
+/**
+ * OVERRIDE INUIT DEFAULTS
+ */
+// All inuit vars can be overriden here (except those defined in CORE settings,
+// which should only be modified with caution).
+
+// OBJECTS.WRAPPER
+$inuit-wrapper-width: 1200px;
+
+// OBJECTS.CROP
+// Populate these with any specific cropping ratios required, refer to object.
+$inuit-crops: ();
+
+// OBJECTS.RATIO
+// Populate these with any specific aspect ratios required, refer to object.
+$inuit-ratios: ();
+
+// UTILITIES.WIDTHS
+// Be aware that enabling offsets produces a large chunk of classes which might
+// bloat your CSS, depending on the amount of breakpoints you defined.
+// Only set this to `true` if you are absolutely sure about what you are doing.
+$inuit-offsets: false; // Turn on or off push and pull for layout system ( u-pull-1/2, u-push-1/3, etc )
+$inuit-fractions: 1 2 3 4 5; // Fractions for grid system ( u-1/1, u-1/5, etc )
+
+// UTILITIES.SPACINGS
+$inuit-spacing-directions: (
+    null: null,
+    '-bottom': '-bottom',
+    '-left': '-left'
+);
+
+// UTILITIES.COLORS
+// Be aware that adding a helper here will generate a new class for every color
+// defined in the monochrome or theme colors in settings.colors.scss, which
+// may bloat your CSS if you have a lot of colors defined.
+$color-helpers: (
+    '-color': 'color',
+    // '-bg-color': 'background-color',
+    // '-fill': 'fill',
+);

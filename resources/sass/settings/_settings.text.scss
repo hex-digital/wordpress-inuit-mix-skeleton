@@ -1,0 +1,89 @@
+/* ==========================================================================
+   #TEXT
+   ========================================================================== */
+
+/**
+ * The text settings file contains any project-wide text and type settings;
+ * Font families are given variable names here for use throughout the scss.
+ * Font sizings are also provided here, which are mapped out and provide
+ * responsive sizings to change across devices.
+ */
+
+// Create variables for the font families to be used across the project.
+$font-family-title: 'arial', 'serif';
+$font-family-content: 'sans-serif';
+
+// The global text map defines a map of text sizings, with their corresponding
+// font sizes, and optionally line-height and letter spacing.
+//
+// A responsive map can be provided to change these text sizings at different
+// breakpoints, allowing for a uniform website that grows and shrinks across
+// devices. All text sizes are mobile-first, and go from the breakpoint upwards.
+//
+// ONLY access this map using the mixins in _tools.text-functions.scss.
+// There are also helper classes for u-text in _utilities.type.scss, which allow
+// the use of .u-text--${size} and .u-text--responsive to add the below styles.
+$global-text-map: (
+    'huge': (
+        size: 46px,
+        line-height: 64px,
+        responsive: (
+            device: (
+                size: 52px,
+                line-height: 70px,
+            ),
+            desk: (
+                size: 56px,
+                line-height: 76px,
+            )
+        )
+    ),
+    'large': (
+        size: 36px,
+        line-height: 54px,
+        responsive: (
+            device: (
+                size: 40px,
+                line-height: 56px,
+            ),
+            desk: (
+                size: 44px,
+                line-height: 60px,
+            )
+        )
+    ),
+    'big': (
+        size: 30px,
+        responsive: (
+            device: (
+                size: 32px,
+            ),
+            desk: (
+                size: 36px,
+            )
+        )
+    ),
+    'medium': (
+        size: 21px,
+        responsive: (
+            device: (
+                size: 24px
+            ),
+            desk: (
+                size: 26px
+            )
+        )
+    ),
+    'base': (
+        size: 16px
+    ),
+    'small': (
+        size: 14px
+    ),
+    'smaller': (
+        size: 12px
+    ),
+    'tiny': (
+        size: 11px
+    )
+);

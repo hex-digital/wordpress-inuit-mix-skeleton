@@ -1,0 +1,114 @@
+/* ==========================================================================
+   #TEXT
+   ========================================================================== */
+
+/**
+ * The text tools file contains functions for accessing the core text map
+ * defined in _settings.text.
+ *
+ * There are two ways of using the text, either the mixins below, or the utility
+ * helper classes in _utilities.text.
+ *
+ * You will want to use these tools when you have a component that needs styling
+ * with settings from the global text map, and where that component must always
+ * be styled that way -- if it's just a one off, use the utility helpers.
+ *
+ *
+ * Most of the time, you'll want to use the text-styles() function. This will
+ * generate a list of styles for a specific font type.
+ *
+ * E.g. @include text-styles('base') might give you a font-size, a line-height
+ * and a letter spacing, and will also make use of the inuit-font-size() mixin
+ * for the font-size and line-height.
+ *
+ * The text-styles() mixin will also generate responsive styles if you ask it
+ * too. The second parameter, $responsive, takes a boolean, and if true, will
+ * generate all the text-styles set in the 'responsive' part of the global
+ * text map for that size, within their own media queries.
+ *
+ * You can also generate these manually on their own, using
+ * text-styles-responsive-only().
+ * This is good for when you need the classes for the responsive sizings to be
+ * different to the base, such as in the _utilities.text class.
+ * (u-text--big and u-text--big.u-text--responsive).
+ *
+ * Finally, if you just need a part of the text map for a size, you can
+ * use text-size, text-height or text-spacing. These are functions, and will
+ * just return the value you specified.
+ */
+
+// Use the below functions and mixins as entry points into the global text map.
+
+@mixin text-styles($_sizing-name, $_responsive: false) {
+    $_text-map: map-get($global-text-map, $_sizing-name);
+
+    @include text-styles-from-map($_text-map);
+
+    @if $_responsive {
+
+        @include text-styles-responsive-only($_sizing-name);
+
+    }
+
+}
+
+@mixin text-styles-responsive-only($_sizing-name) {
+    $_responsive-map: map-deep-get($global-text-map, $_sizing-name, 'responsive');
+
+    @if $_responsive-map {
+
+        @each $_breakpoint, $_responsive-text-map in $_responsive-map {
+
+            @include mq($_breakpoint) {
+                @include text-styles-from-map($_responsive-text-map);
+            }
+
+        }
+
+    }
+
+}
+
+@function text-size($_size) {
+    @return text-default($_size, 'size');
+}
+
+@function text-height($_size) {
+    @return text-default($_size, 'line-height');
+}
+
+@function text-spacing($_size) {
+    @return text-default($_size, 'spacing');
+}
+
+
+
+
+
+// The below are the core functions that do the bulk of the work. You probably
+// don't want to call these in your code, but rely on the entry functions and
+// mixins declared above.
+@function text-default($_args...) {
+    @return map-deep-get($global-text-map, $_args...);
+}
+
+@mixin text-styles-from-map($_text-map) {
+
+    $_size: map-get($_text-map, 'size');
+    $_line-height: map-get($_text-map, 'line-height');
+    $_letter-spacing: map-get($_text-map, 'letter-spacing');
+
+    @if $_size and $_line-height {
+        @include font-size($_size, $_line-height);
+    }
+    @else if $_size {
+        @include font-size($_size);
+    }
+    @else if $_line_height {
+        line-height: $_line-height;
+    }
+    @if $_letter-spacing {
+        letter-spacing: $_letter-spacing;
+    }
+
+}

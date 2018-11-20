@@ -1,0 +1,34 @@
+/* ==========================================================================
+   #VISIBILITY
+   ========================================================================== */
+
+/**
+ * The visibility utilities file contains helper classes for hiding content at
+ * certain screen sizes;
+ */
+
+.u-hide {
+    display: none;
+    @each $_breakpoint, $_screensize in $mq-breakpoints {
+
+        &-from {
+
+            &-#{$_breakpoint} {
+                @include mq($from: $_breakpoint) {
+                    display: none !important;
+                }
+            }
+
+        }
+
+        &-until {
+
+            &-#{$_breakpoint} {
+                @include mq($until: $_breakpoint) {
+                    display: none !important;
+                }
+            }
+
+        }
+    }
+}

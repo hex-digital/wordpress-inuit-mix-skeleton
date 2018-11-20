@@ -1,0 +1,26 @@
+/* ==========================================================================
+   #ICON
+   ========================================================================== */
+
+/**
+ * Adjust the svg icons object so that it resizes correctly.
+ *
+ * Set any default fills and strokes for SVGs.
+ */
+
+.o-icon {
+
+    &,
+    &__svg {
+        fill: inherit;
+        height: inherit;
+        stroke: inherit;
+        width: inherit;
+    }
+
+    &--caret {
+        fill: none;
+        stroke: color('black');
+    }
+
+}

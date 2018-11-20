@@ -1,0 +1,15 @@
+/* ==========================================================================
+   #COLORS
+   ========================================================================== */
+
+/**
+ * The colors tools file contains functions for accessing the core map colors
+ * defined in _settings.colors.
+ */
+
+@function theme-color($_color) {
+    @if not map-has-key($map-core-colors, $_color) {
+        @warn 'No color found for `#{$_color}` in $map-core-colors - color returned will be null.';
+    }
+    @return map-get($map-core-colors, $_color);
+}

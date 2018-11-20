@@ -1,0 +1,70 @@
+/* ==========================================================================
+   #MIXINS
+   ========================================================================== */
+
+/**
+ * The mixins tools file contains functions for generating common CSS patterns;
+ * Most notable is the keyframes mixin for generating keyframes cross-browser.
+ */
+
+/* stylelint-disable at-rule-no-vendor-prefix */
+
+@mixin keyframes($_name) {
+    @-webkit-keyframes #{$_name} {
+        @content;
+    }
+    @-moz-keyframes #{$_name} {
+        @content;
+    }
+    @-o-keyframes #{$_name} {
+        @content;
+    }
+    @keyframes #{$_name} {
+        @content;
+    }
+}
+
+/* stylelint-enable at-rule-no-vendor-prefix */
+
+@mixin count-items($_count: count) {
+
+    &:first-child:nth-last-child(#{$_count}),
+    &:first-child:nth-last-child(#{$_count}) ~ & {
+        @content;
+    }
+
+}
+
+// If you want hover classes to only apply from a certain breakpoint
+@mixin hover($_from: device) {
+    @include mq($from: $_from) {
+
+        &:hover {
+            @content;
+        }
+
+    }
+}
+
+@mixin h-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin object-fit() {
+    font-family: 'object-fit: contain;'; // For the object-fit shim for older browsers
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+
+    &__container {
+
+        &--fallback {
+            background-size: cover;
+            display: block;
+        }
+
+    }
+
+}

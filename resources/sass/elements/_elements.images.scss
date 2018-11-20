@@ -1,0 +1,19 @@
+/* ==========================================================================
+   #IMAGES
+   ========================================================================== */
+
+/**
+ * Specific styles for the default img elements
+ *
+ * 1. Set all base images to 100% width, unless they have an explictly defined
+ * width or height on them already. This allows them to be responsive and
+ * contained.
+ */
+
+img {
+
+    &:not([width]):not([height]) {
+        width: 100%;  /* [1] */
+    }
+
+}

@@ -1,0 +1,17 @@
+/* ==========================================================================
+   #LAYOUT
+   ========================================================================== */
+
+/**
+ * The layout tools file contains functions for accessing the layout settings
+ * defined in _settings.layout.
+ */
+
+@function z-index($_layer) {
+    @if not map-has-key($global-z-index, $_layer) {
+        @warn 'No layer found for `#{$_layer}` in $global-z-index map - z-index property omitted.';
+    }
+    @return map-get($global-z-index, $_layer);
+}
+
+
